@@ -7,9 +7,8 @@ class MarkdownField extends TextareaField {
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js');
 		Requirements::javascript('markdown/javascript/showdown.js');
 		Requirements::javascript('markdown/javascript/md.js');
-		Requirements::css('themes/dew/css/typography.css');
+		Requirements::themedCSS('typography');
 		Requirements::css('markdown/css/md.css');
-
 		if($this->disabled) $attributes['disabled'] = 'disabled';
 		$properties["class"] = "markdown_Input";
 		$properties["LinkSuggest"] = $this->Link() . '/linksuggest';
