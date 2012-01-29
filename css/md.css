@@ -1,0 +1,17 @@
+/* line 3, ../scss/md.sass */
+div.field.markdown { position: relative; }
+
+/* line 6, ../scss/md.sass */
+.field textarea.markdown, .markdown_CaretHelper { -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; -khtml-border-radius: 0; border-radius: 0; background: white; padding: 10px; float: left; height: 500px; font-family: monospace; width: 500px; overflow: auto; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; line-height: 1.5em; }
+
+/* line 17, ../scss/md.sass */
+.markdown_preview { height: 478px; width: 40%; background: white; float: left; padding: 10px; border: 1px solid #cccccc; border-left: none; overflow: auto; }
+
+/* line 26, ../scss/md.sass */
+#markdown_CaretPosition { background: red; }
+
+/* line 28, ../scss/md.sass */
+.markdown_CaretHelper { position: absolute; top: 0; left: 204; opacity: 0; z-index: -100; }
+
+/* line 34, ../scss/md.sass */
+#markdown_AutoSuggestLinks { width: 200px; height: 20px; border: 1px solid black; padding: 3px; }

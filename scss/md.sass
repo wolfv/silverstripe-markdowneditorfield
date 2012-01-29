@@ -1,0 +1,38 @@
+@import compass
+
+div.field.markdown
+	position: relative
+
+.field textarea.markdown, .markdown_CaretHelper
+	+border-radius(0)
+	background: #FFF
+	padding: 10px
+	float: left
+	height: 500px
+	font-family: monospace
+	width: 500px
+	overflow: auto
+	+box-sizing(border-box)
+	line-height: 1.5em
+.markdown_preview
+	height: 478px
+	width: 40%
+	background: #FFF
+	float: left
+	padding: 10px
+	border: 1px solid #CCC
+	border-left: none
+	overflow: auto
+#markdown_CaretPosition
+	background: #F00
+.markdown_CaretHelper
+	position: absolute
+	top: 0
+	left: 204
+	opacity: 0
+	z-index: -100
+#markdown_AutoSuggestLinks
+	width: 200px
+	height: 20px
+	border: 1px solid #000
+	padding: 3px
