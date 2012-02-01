@@ -1,6 +1,7 @@
 @import compass
 
 $font: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Droid Sans Mono', 'Consolas', monospace
+$height: 470px
 
 ::-webkit-scrollbar
 	width: 5px
@@ -25,14 +26,14 @@ textarea.markdown
 #markdown_EditorWrapper
 	position: relative
 	float: left
-	height: 500px
+	height: $height
 	margin-right: 40px
 #markdown_Editor
 	position: absolute
 	top: 30px
 	left: 0
 	width: 512px
-	height: 500px
+	height: $height
 	+border-radius(4px)
 	background: #FFF
 	z-index: 100
@@ -41,7 +42,7 @@ textarea.markdown
 	padding: 5px
 	top: 0
 	left: 54px
-	width: 436px
+	width: 446px
 	background: whiteSmoke
 	.markdown_button
 		font-family: $font
@@ -61,13 +62,13 @@ textarea.markdown
 	display: none
 #markdown_Preview
 	position: relative
-	top: 0
-	left: 510px
+	margin-top: 30px
 	width: 512px
-	height: 500px
+	height: $height
 	background: #FFF
 	float: left
 	overflow-y: scroll
+	opacity: 0
 #markdown_PreviewButton
 	padding: 3px 5px
 	cursor: pointer
@@ -79,6 +80,7 @@ textarea.markdown
 #markdown_PreviewContent
 	overflow-y: scroll
 	padding: 10px
+
 .autocomplete
 	border: none
 	color: #F00
@@ -110,6 +112,14 @@ textarea.markdown
 		line-height: 15px
 		border: none
 		background: #F3F3F3
+		.autosuggest_breadcrumb
+			display: block
+			color: #999
+			font-size: 10px
+			line-height: 10px
+		.autosuggest_title
+			display: block
+			color: #000
 		a
 			display: block
 		.ui-state-hover

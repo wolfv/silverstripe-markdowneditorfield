@@ -52,8 +52,8 @@ $('#markdown_Editor').entwine({
 		return this.getEditor().getSession().getValue();
 	},
 	insertText: function(text, clearBefore) {
+		this.getEditor().remove('left');
 		this.getEditor().insert(text);
-		this.getEditor().remove();
 		this.getEditor().focus();
 	},
 	focusEditor: function() {
@@ -81,7 +81,7 @@ $('#markdown_PreviewContent').entwine({
 	Timer: null,
 	Converter: null,
 	Editor: null,
-	Open: true,
+	Open: false,
 	onmatch: function() {
 		this.setEditor($('#markdown_Editor'));
 		this.setConverter(new Showdown.converter());
@@ -99,13 +99,25 @@ $('#markdown_PreviewContent').entwine({
 	},
 	refresh: function() {
 		this.html(this.getConverter().makeHtml(this.getEditor().editorContent()));
+
 	},
 	reload: function() {
 		self = this;
+		if(!this.getOpen()) {
+			this.parent().animate({ left : '490px', opacity: 1}, 500);
+			this.setOpen(true);
+		}
+		else {
+			this.animate({opacity: 0},200).addClass('loading');
+		}
 		$.post(
 			"getconvertedhtml",{ text : self.getEditor().editorContent() },
 			function(data) {
-				self.html(data);
+
+				self.html(data).animate({opacity: 1},200).removeClass('loading');
+				self.find('pre').each(function(i, e){
+					hljs.highlightBlock(e);
+				});
 			}
 		);
 		return;
@@ -141,6 +153,7 @@ $('#markdown_SiteTreeAutocomplete').entwine({
 		onmatch: function() {
 			var linksuggest = $(this).attr('linksuggest');
 			this.autocomplete({
+				html: true,
 				source: function( request, response ) {
 					$.ajax({
 						url: linksuggest,
@@ -151,7 +164,8 @@ $('#markdown_SiteTreeAutocomplete').entwine({
 						success: function( data ) {
 							response( $.map( data, function( item ) {
 								return {
-									label: item.Title,
+									label: '<span class="autosuggest_title">' + item.Label + '</span>' +
+												 '<span class="autosuggest_breadcrumb">' + item.Breadcrumbs + '</span>',
 									value: item.ID
 								}
 							}));

@@ -417,6 +417,32 @@ func main() {
 &lt;/body&gt;
 </code></pre>
 
+	<tr>
+		<th>Markdown
+		<td class="markdown">
+<pre>
+<code># hello world
+
+you can write text [with links](http://example.com).
+
+* one _thing_ has *em*phasis
+* two __things__ are **bold**
+
+---
+
+hello world
+===========
+
+&lt;this_is inline="xml"&gt;&lt;/this_is&gt;
+
+&gt; markdown is so cool
+
+    so are code segments
+
+1. one thing (yeah!)
+2. two thing `i can write code`, and `more` wipee!
+</code></pre>
+
   <tr>
     <th>Django templates
     <td class="django">
@@ -573,7 +599,7 @@ comment ]==]
 Private
   Some: String;
 Public
-  Procedure Inside;
+  Procedure Inside; // Suxx
 End;{TList}
 
 Procedure CopyFile(InFileName,var OutFileName:String);
@@ -772,6 +798,8 @@ void main () {
     <th>C#
     <td class="cs">
 <pre><code>using System;
+
+#pragma warning disable 414, 3021
 
 public class Program
 {
@@ -1133,6 +1161,7 @@ BE_VERBOSE=false
 if [ "$UID" -ne 0 ]
 then
  echo "Superuser rights is required"
+ echo 'Printing the # sign'
  exit 2
 fi
 
@@ -1577,7 +1606,7 @@ ok
     <th>Custom markup
     <td>
 <pre><code>&lt;<a href="http://dev.w3.org/html5/spec/Overview.html#the-div-element">div</a> id="contents"&gt;
-  <del>&lt;p&gt;Hello, World!</del>
+  <del>&lt;p&gt;Hello, World!</del><!-- A comment should not break merging --><ins>Goodbye, cruel world!</ins>
 &lt;/div&gt;
 </code></pre>
 

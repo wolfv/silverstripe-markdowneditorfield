@@ -24,8 +24,14 @@ class MarkdownField extends TextareaField {
 	function linksuggest() {
 		$search = $this->request["search"];
 		$data = DataList::create('SiteTree')->filter(array("Title:StartsWith" => $search));
-		$data_array = $data->toNestedArray();
-		return json_encode($data_array);
+
+		$result;
+
+		foreach($data as $item) {
+			$result[] = array("Label" => $item->Title, "Breadcrumbs" => $item->Breadcrumbs(20, true, false, false), "ID" => $item->ID);
+		}
+
+		return json_encode($result);
 	}
 
 	function getlinktoid() {
@@ -40,7 +46,7 @@ class MarkdownField extends TextareaField {
 		$result;
 
 		foreach($data as $item) {
-			$result[] = array("ImageLink" => $item->CMSThumbnail()->Link(), "Label" => $item->Title, "ID" => 1);
+			$result[] = array("ImageLink" => $item->CMSThumbnail()->Link(), "Label" => $item->Title, "ID" => $item->ID);
 		}
 		//$data_array = $data->toNestedArray();
 		return json_encode($result);
@@ -54,8 +60,9 @@ class MarkdownField extends TextareaField {
 
 	function getconvertedhtml() {
 		require_once('lib/markdown/markdown.php');
+		require_once('lib/markdown/markdown_extended.php');
 		$text = $this->request["text"];
-		return Markdown($text);
+		return MarkdownExtended($text);
 	}
 
 	public function getEditor() {
@@ -68,7 +75,13 @@ class MarkdownField extends TextareaField {
 		Requirements::javascript('markdown/javascript/lib/ace/src/ace.js');
 		Requirements::javascript('markdown/javascript/lib/ace/src/mode-markdown.js');
 		Requirements::javascript('markdown/javascript/lib/ace/src/theme-' . self::$editortheme . '.js');
+
+
+		Requirements::javascript('markdown/javascript/lib/highlight/src/highlight.pack.js');
+		Requirements::css('markdown/javascript/lib/highlight/src/styles/github.css');
+
 		Requirements::javascript('markdown/javascript/markdownEditor.js');
+
 		Requirements::themedCSS('typography');
 		Requirements::css('markdown/css/md.css');
 		//Requirements::css(THIRDPARTY_DIR . '/jquery-ui-themes/smoothness/jquery-ui.css');
