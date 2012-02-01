@@ -36,9 +36,14 @@ class MarkdownField extends TextareaField {
 
 	function imagesuggest() {
 		$search = $this->request["search"];
-		$data = DataList::create('File')->filter(array("Title:PartialMatch" => $search));
-		$data_array = $data->toNestedArray();
-		return json_encode($data_array);
+		$data = DataList::create('Image')->filter(array("Title:PartialMatch" => $search));
+		$result;
+
+		foreach($data as $item) {
+			$result[] = array("ImageLink" => $item->CMSThumbnail()->Link(), "Label" => $item->Title, "ID" => 1);
+		}
+		//$data_array = $data->toNestedArray();
+		return json_encode($result);
 	}
 
 	function getimagelinktoid() {
@@ -47,11 +52,18 @@ class MarkdownField extends TextareaField {
 		return $data->Link();
 	}
 
+	function getconvertedhtml() {
+		require_once('lib/markdown/markdown.php');
+		$text = $this->request["text"];
+		return Markdown($text);
+	}
+
 	public function getEditor() {
 		Requirements::clear();
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery-ui/jquery-ui.js');
 		Requirements::javascript(THIRDPARTY_DIR. '/jquery-entwine/dist/jquery.entwine-dist.js');
+		Requirements::javascript('markdown/javascript/lib/jquery.ui.autocomplete.html.js');
 		Requirements::javascript('markdown/javascript/lib/showdown.js');
 		Requirements::javascript('markdown/javascript/lib/ace/src/ace.js');
 		Requirements::javascript('markdown/javascript/lib/ace/src/mode-markdown.js');

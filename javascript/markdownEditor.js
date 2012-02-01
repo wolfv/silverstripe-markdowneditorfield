@@ -85,20 +85,30 @@ $('#markdown_PreviewContent').entwine({
 	onmatch: function() {
 		this.setEditor($('#markdown_Editor'));
 		this.setConverter(new Showdown.converter());
-		this.startWatching();
+		//this.startWatching();
 	},
 	close: function() {
 		this.parent().css('opacity', 0);
-		this.stopWatching();
+		//this.stopWatching();
 		this.setOpen(false);
 	},
 	open: function() {
 		this.parent().css('opacity', 1);
-		this.startWatching();
+		//this.startWatching();
 		this.setOpen(true);
 	},
 	refresh: function() {
 		this.html(this.getConverter().makeHtml(this.getEditor().editorContent()));
+	},
+	reload: function() {
+		self = this;
+		$.post(
+			"getconvertedhtml",{ text : self.getEditor().editorContent() },
+			function(data) {
+				self.html(data);
+			}
+		);
+		return;
 	},
 	startWatching: function() {
 		var self = this;
@@ -113,10 +123,12 @@ $('#markdown_PreviewContent').entwine({
 
 $('#markdown_PreviewButton').entwine({
 	onclick: function() {
-		if($('#markdown_PreviewContent').getOpen())
+		$('#markdown_PreviewContent').reload();
+		/*if($('#markdown_PreviewContent').getOpen())
 			$('#markdown_PreviewContent').close();
 		else
 			$('#markdown_PreviewContent').open();
+		*/
 	}
 });
 $('.markdown_italic').entwine({
@@ -167,6 +179,7 @@ $('#markdown_ImageAutocomplete').entwine({
 		onmatch: function() {
 			var linksuggest = $(this).attr('linksuggest');
 			this.autocomplete({
+				html: true,
 				source: function( request, response ) {
 					$.ajax({
 						url: linksuggest,
@@ -177,10 +190,11 @@ $('#markdown_ImageAutocomplete').entwine({
 						success: function( data ) {
 							response( $.map( data, function( item ) {
 								return {
-									label: item.Title,
+									label: '<img src='+item.ImageLink + '>' + item.Label,
 									value: item.ID
 								}
 							}));
+							return result(responseArray);
 						},
 						error: function(data) {
 							console.log(data);
@@ -197,7 +211,7 @@ $('#markdown_ImageAutocomplete').entwine({
 				close: function() {
 					$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
 				}
-			});
+			})
 		},
 
 });

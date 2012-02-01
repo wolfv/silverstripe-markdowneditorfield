@@ -38,20 +38,25 @@ textarea.markdown
 	z-index: 100
 #markdown_ButtonBar
 	position: absolute
+	padding: 5px
 	top: 0
-	left: 45px
-	width: 300px
+	left: 54px
+	width: 436px
+	background: whiteSmoke
 	.markdown_button
-		width: 15px
+		font-family: $font
+		font-size: 15px
 		text-align: center
-		height: 15px
 		padding: 3px
-		border: 1px solid #CCC
-		background: #EEE
+		line-height: 15px
 		float: left
 		cursor: pointer
 		margin-right: 5px
-		+background-image(linear-gradient(top, #DDD, #F6F6F6))
+		&:hover
+			+box-shadow(0 0 3px #777)
+			+background-image(linear-gradient(#F5F5F5, #E5E5E5))
+			border: none
+			+border-radius(2px)
 #markdown_Value
 	display: none
 #markdown_Preview
@@ -64,13 +69,13 @@ textarea.markdown
 	float: left
 	overflow-y: scroll
 #markdown_PreviewButton
-	opacity: 0.6
-	position: absolute
-	top: 18px
-	left: 510px
 	padding: 3px 5px
-	background: #B0BEC7
-	+rotate(90deg)
+	cursor: pointer
+	border: none
+	&:active, &:focus
+		background: darken(#B0BEC7, 20%)
+	&:hover
+		background: darken(#B0BEC7, 10%)
 #markdown_PreviewContent
 	overflow-y: scroll
 	padding: 10px
@@ -102,7 +107,7 @@ textarea.markdown
 		display: block
 		+border-radius(0)
 		font-size: 12px
-		height: 15px
+		line-height: 15px
 		border: none
 		background: #F3F3F3
 		a
