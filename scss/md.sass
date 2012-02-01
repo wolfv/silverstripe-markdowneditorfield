@@ -1,38 +1,111 @@
 @import compass
 
-div.field.markdown
-	position: relative
+$font: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Droid Sans Mono', 'Consolas', monospace
 
-.field textarea.markdown, .markdown_CaretHelper
-	+border-radius(0)
+::-webkit-scrollbar
+	width: 5px
+	height: 5px
+
+::-webkit-scrollbar-track
 	background: #FFF
-	padding: 10px
+	-webkit-border-radius: 5px
+::-webkit-scrollbar-thumb
+	background: #AAA
+	-webkit-border-radius: 5px
+.x
+	clear: both
+div.field.markdown
+	.middleColumn
+		position: relative
+.markdown_Iframe
+	width: 100%
+	height: 520px
+textarea.markdown
+	display: none
+#markdown_EditorWrapper
+	position: relative
 	float: left
 	height: 500px
-	font-family: monospace
-	width: 500px
-	overflow: auto
-	+box-sizing(border-box)
-	line-height: 1.5em
-.markdown_preview
-	height: 478px
-	width: 40%
+	margin-right: 40px
+#markdown_Editor
+	position: absolute
+	top: 30px
+	left: 0
+	width: 512px
+	height: 500px
+	+border-radius(4px)
 	background: #FFF
-	float: left
-	padding: 10px
-	border: 1px solid #CCC
-	border-left: none
-	overflow: auto
-#markdown_CaretPosition
-	background: #F00
-.markdown_CaretHelper
+	z-index: 100
+#markdown_ButtonBar
 	position: absolute
 	top: 0
-	left: 204
-	opacity: 0
-	z-index: -100
-#markdown_AutoSuggestLinks
+	left: 45px
+	width: 300px
+	.markdown_button
+		width: 15px
+		text-align: center
+		height: 15px
+		padding: 3px
+		border: 1px solid #CCC
+		background: #EEE
+		float: left
+		cursor: pointer
+		margin-right: 5px
+		+background-image(linear-gradient(top, #DDD, #F6F6F6))
+#markdown_Value
+	display: none
+#markdown_Preview
+	position: relative
+	top: 0
+	left: 510px
+	width: 512px
+	height: 500px
+	background: #FFF
+	float: left
+	overflow-y: scroll
+#markdown_PreviewButton
+	opacity: 0.6
+	position: absolute
+	top: 18px
+	left: 510px
+	padding: 3px 5px
+	background: #B0BEC7
+	+rotate(90deg)
+#markdown_PreviewContent
+	overflow-y: scroll
+	padding: 10px
+.autocomplete
+	border: none
+	color: #F00
+	height: 15px
+	font-size: 12px
+	font-family: $font
+	background: #FFF
+	padding: 0px
+	background: #FFF
 	width: 200px
-	height: 20px
-	border: 1px solid #000
-	padding: 3px
+	position: absolute
+	top: 10px
+	right: 100px
+	display: none
+	&:focus
+		outline: none
+		border: none
+.ui-autocomplete
+	list-style-type: none
+	width: 200px
+	margin: 0
+	padding: 0
+	.ui-menu-item
+		font-family: $font
+		padding: 0
+		display: block
+		+border-radius(0)
+		font-size: 12px
+		height: 15px
+		border: none
+		background: #F3F3F3
+		a
+			display: block
+		.ui-state-hover
+			background: #F00
