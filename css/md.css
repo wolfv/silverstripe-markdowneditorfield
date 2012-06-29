@@ -1,12 +1,3 @@
-/* line 6, ../scss/md.sass */
-::-webkit-scrollbar { width: 5px; height: 5px; }
-
-/* line 10, ../scss/md.sass */
-::-webkit-scrollbar-track { background: white; -webkit-border-radius: 5px; }
-
-/* line 13, ../scss/md.sass */
-::-webkit-scrollbar-thumb { background: #aaaaaa; -webkit-border-radius: 5px; }
-
 /* line 16, ../scss/md.sass */
 .x { clear: both; }
 
@@ -14,54 +5,69 @@
 div.field.markdown .middleColumn { position: relative; }
 
 /* line 21, ../scss/md.sass */
-.markdown_Iframe { width: 100%; height: 520px; }
+.markdown-editor-iframe { width: 100%; height: 520px; }
 
-/* line 24, ../scss/md.sass */
+/* line 25, ../scss/md.sass */
+.markdown-editor-toolbar { position: absolute; padding: 5px; top: 0; left: 48px; width: 446px; background: whiteSmoke; }
+/* line 32, ../scss/md.sass */
+.markdown-editor-toolbar .logo { width: 32px; height: 20px; background: url('../images/markdown32x20.png?1340987236') no-repeat center; display: inline-block; float: left; margin-left: -45px; }
+/* line 39, ../scss/md.sass */
+.markdown-editor-toolbar .md-button { width: 20px; height: 16px; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; border: solid 2px black; font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas", monospace; text-align: center; float: left; cursor: pointer; margin-right: 5px; }
+/* line 49, ../scss/md.sass */
+.markdown-editor-toolbar .md-button.md-help { background: url('../images/info.png?1297166812') no-repeat center; }
+/* line 51, ../scss/md.sass */
+.markdown-editor-toolbar .md-button.md-preview { background: url('../images/eye.png?1297167108') no-repeat center; }
+/* line 53, ../scss/md.sass */
+.markdown-editor-toolbar .md-button.md-refresh { background: url('../images/reload.png?1297166840') no-repeat center; }
+/* line 55, ../scss/md.sass */
+.markdown-editor-toolbar .md-button.md-close { background: url('../images/close.png?1297166968') no-repeat center; }
+/* line 57, ../scss/md.sass */
+.markdown-editor-toolbar .md-button:hover { background-color: #aaaaaa; }
+
+/* line 59, ../scss/md.sass */
 textarea.markdown { display: none; }
 
-/* line 26, ../scss/md.sass */
-#markdown_EditorWrapper { position: relative; float: left; height: 470px; margin-right: 40px; }
-
-/* line 31, ../scss/md.sass */
-#markdown_Editor { position: absolute; top: 30px; left: 0; width: 512px; height: 470px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; background: white; z-index: 100; }
-
-/* line 40, ../scss/md.sass */
-#markdown_ButtonBar { position: absolute; padding: 5px; top: 0; left: 54px; width: 446px; background: whiteSmoke; }
-/* line 47, ../scss/md.sass */
-#markdown_ButtonBar .markdown_button { font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas", monospace; font-size: 15px; text-align: center; padding: 3px; line-height: 15px; float: left; cursor: pointer; margin-right: 5px; }
-/* line 56, ../scss/md.sass */
-#markdown_ButtonBar .markdown_button:hover { -moz-box-shadow: 0 0 3px #777777; -webkit-box-shadow: 0 0 3px #777777; -o-box-shadow: 0 0 3px #777777; box-shadow: 0 0 3px #777777; background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f5f5f5), color-stop(100%, #e5e5e5)); background-image: -webkit-linear-gradient(#f5f5f5, #e5e5e5); background-image: -moz-linear-gradient(#f5f5f5, #e5e5e5); background-image: -o-linear-gradient(#f5f5f5, #e5e5e5); background-image: -ms-linear-gradient(#f5f5f5, #e5e5e5); background-image: linear-gradient(#f5f5f5, #e5e5e5); border: none; -moz-border-radius: 2px; -webkit-border-radius: 2px; -o-border-radius: 2px; -ms-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; }
-
 /* line 61, ../scss/md.sass */
-#markdown_Value { display: none; }
+#markdown_EditorHTML { overflow: hidden; }
 
 /* line 63, ../scss/md.sass */
-#markdown_Preview { position: relative; margin-top: 30px; width: 512px; height: 470px; background: white; float: left; overflow-y: scroll; opacity: 0; }
+#markdown_EditorWrapper { position: relative; float: left; height: 470px; margin-right: 40px; }
 
-/* line 72, ../scss/md.sass */
-#markdown_PreviewButton { padding: 3px 5px; cursor: pointer; border: none; }
-/* line 76, ../scss/md.sass */
-#markdown_PreviewButton:active, #markdown_PreviewButton:focus { background: #748d9d; }
-/* line 78, ../scss/md.sass */
-#markdown_PreviewButton:hover { background: #92a5b2; }
+/* line 68, ../scss/md.sass */
+#markdown_Editor { position: absolute; top: 30px; left: 0; width: 512px; height: 470px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; background: white; z-index: 100; }
 
-/* line 80, ../scss/md.sass */
-#markdown_PreviewContent { overflow-y: scroll; padding: 10px; }
+/* line 77, ../scss/md.sass */
+#markdown_Value { display: none; }
 
-/* line 84, ../scss/md.sass */
-.autocomplete { border: none; color: red; height: 15px; font-size: 12px; font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas", monospace; background: white; padding: 0px; background: white; width: 200px; position: absolute; top: 10px; right: 100px; display: none; }
-/* line 98, ../scss/md.sass */
+/* line 79, ../scss/md.sass */
+#markdown_Preview { position: relative; margin-top: 30px; width: 502px; height: 460px; background: white; float: left; overflow-y: scroll; opacity: 0; padding: 5px; }
+
+/* line 89, ../scss/md.sass */
+.hidden-proxy-buttons { display: none; }
+
+/* line 91, ../scss/md.sass */
+#markdown_PreviewContent { overflow-y: hidden; padding: 5px; background: white; }
+
+/* line 95, ../scss/md.sass */
+.autocomplete { border: none; color: #3875d7; height: 15px; font-size: 12px; font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas", monospace; background: white; padding: 0px; background: white; width: 200px; position: absolute; top: 10px; right: 100px; display: none; }
+/* line 109, ../scss/md.sass */
 .autocomplete:focus { outline: none; border: none; }
 
-/* line 101, ../scss/md.sass */
-.ui-autocomplete { list-style-type: none; width: 200px; margin: 0; padding: 0; }
-/* line 106, ../scss/md.sass */
-.ui-autocomplete .ui-menu-item { font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas", monospace; padding: 0; display: block; -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; -khtml-border-radius: 0; border-radius: 0; font-size: 12px; line-height: 15px; border: none; background: #f3f3f3; }
-/* line 115, ../scss/md.sass */
+/* line 112, ../scss/md.sass */
+.ui-autocomplete { list-style-type: none; width: 200px; margin: 0; padding: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px; border-radius: 2px; }
+/* line 118, ../scss/md.sass */
+.ui-autocomplete .ui-menu-item { font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas", monospace; padding: 2px; display: block; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; border-radius: 0; font-size: 12px; line-height: 15px; background: #f9f9f9; clear: both; border-bottom: 1px solid #cccccc; }
+/* line 128, ../scss/md.sass */
+.ui-autocomplete .ui-menu-item:last-child { border-bottom: 0; }
+/* line 130, ../scss/md.sass */
+.ui-autocomplete .ui-menu-item .image_suggest_item { display: inline-block; }
+/* line 132, ../scss/md.sass */
 .ui-autocomplete .ui-menu-item .autosuggest_breadcrumb { display: block; color: #999999; font-size: 10px; line-height: 10px; }
-/* line 120, ../scss/md.sass */
+/* line 137, ../scss/md.sass */
 .ui-autocomplete .ui-menu-item .autosuggest_title { display: block; color: black; }
-/* line 123, ../scss/md.sass */
+/* line 140, ../scss/md.sass */
 .ui-autocomplete .ui-menu-item a { display: block; }
-/* line 125, ../scss/md.sass */
-.ui-autocomplete .ui-menu-item .ui-state-hover { background: red; }
+/* line 142, ../scss/md.sass */
+.ui-autocomplete .ui-menu-item .ui-state-hover { background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #3875d7), color-stop(90%, #2a62bc)); background-image: -webkit-linear-gradient(top, #3875d7 20%, #2a62bc 90%); background-image: -moz-linear-gradient(top, #3875d7 20%, #2a62bc 90%); background-image: -o-linear-gradient(top, #3875d7 20%, #2a62bc 90%); background-image: -ms-linear-gradient(top, #3875d7 20%, #2a62bc 90%); background-image: linear-gradient(top, #3875d7 20%, #2a62bc 90%); background-color: #3875d7; color: white; }
+/* line 146, ../scss/md.sass */
+.ui-autocomplete .ui-menu-item .image_suggest_img { margin-right: 5px; float: left; }

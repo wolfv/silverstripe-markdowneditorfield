@@ -7,6 +7,6 @@ require_once('lib/phphyphenator/hyphenation.php');
 class MarkdownParser extends TextParser {
 	function parse() {
 		$text = MarkdownExtended($this->content);
-		return hyphenation($text);
+		return $text;
 	}
 }

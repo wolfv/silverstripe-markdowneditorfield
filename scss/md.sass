@@ -3,26 +3,63 @@
 $font: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Droid Sans Mono', 'Consolas', monospace
 $height: 470px
 
-::-webkit-scrollbar
-	width: 5px
-	height: 5px
-
-::-webkit-scrollbar-track
-	background: #FFF
-	-webkit-border-radius: 5px
-::-webkit-scrollbar-thumb
-	background: #AAA
-	-webkit-border-radius: 5px
+//::-webkit-scrollbar
+//	width: 5px
+//	height: 5px
+//
+//::-webkit-scrollbar-track
+//	background: #FFF
+//	-webkit-border-radius: 5px
+//::-webkit-scrollbar-thumb
+//	background: #AAA
+//	-webkit-border-radius: 5px
 .x
 	clear: both
 div.field.markdown
 	.middleColumn
 		position: relative
-.markdown_Iframe
+.markdown-editor-iframe
 	width: 100%
 	height: 520px
+
+.markdown-editor-toolbar
+	position: absolute
+	padding: 5px
+	top: 0
+	left: 48px
+	width: 446px
+	background: whiteSmoke
+	.logo	
+		width: 32px
+		height: 20px
+		background: image-url('markdown32x20.png') no-repeat center
+		display: inline-block
+		float: left
+		margin-left: -45px
+	.md-button
+		width: 20px
+		height: 16px
+		+border-radius(3px)
+		border: solid 2px #000
+		font-family: $font
+		text-align: center
+		float: left
+		cursor: pointer
+		margin-right: 5px
+		&.md-help 		
+			background: image-url('info.png') no-repeat center
+		&.md-preview 
+			background: image-url('eye.png') no-repeat center
+		&.md-refresh
+			background: image-url('reload.png') no-repeat center
+		&.md-close
+			background: image-url('close.png') no-repeat center
+		&:hover
+			background-color: #AAA
 textarea.markdown
 	display: none
+#markdown_EditorHTML
+	overflow: hidden
 #markdown_EditorWrapper
 	position: relative
 	float: left
@@ -37,53 +74,27 @@ textarea.markdown
 	+border-radius(4px)
 	background: #FFF
 	z-index: 100
-#markdown_ButtonBar
-	position: absolute
-	padding: 5px
-	top: 0
-	left: 54px
-	width: 446px
-	background: whiteSmoke
-	.markdown_button
-		font-family: $font
-		font-size: 15px
-		text-align: center
-		padding: 3px
-		line-height: 15px
-		float: left
-		cursor: pointer
-		margin-right: 5px
-		&:hover
-			+box-shadow(0 0 3px #777)
-			+background-image(linear-gradient(#F5F5F5, #E5E5E5))
-			border: none
-			+border-radius(2px)
 #markdown_Value
 	display: none
 #markdown_Preview
 	position: relative
 	margin-top: 30px
-	width: 512px
-	height: $height
+	width: 502px
+	height: $height - 10
 	background: #FFF
 	float: left
 	overflow-y: scroll
 	opacity: 0
-#markdown_PreviewButton
-	padding: 3px 5px
-	cursor: pointer
-	border: none
-	&:active, &:focus
-		background: darken(#B0BEC7, 20%)
-	&:hover
-		background: darken(#B0BEC7, 10%)
+	padding: 5px
+.hidden-proxy-buttons
+	display: none
 #markdown_PreviewContent
-	overflow-y: scroll
-	padding: 10px
-
+	overflow-y: hidden
+	padding: 5px
+	background: #FFF
 .autocomplete
 	border: none
-	color: #F00
+	color: #3875d7
 	height: 15px
 	font-size: 12px
 	font-family: $font
@@ -102,16 +113,22 @@ textarea.markdown
 	list-style-type: none
 	width: 200px
 	margin: 0
-	padding: 0
+	padding: 2px
+	+border-radius(2px)
 	.ui-menu-item
 		font-family: $font
-		padding: 0
+		padding: 2px
 		display: block
 		+border-radius(0)
 		font-size: 12px
 		line-height: 15px
-		border: none
-		background: #F3F3F3
+		background: #F9F9F9
+		clear: both
+		border-bottom: 1px solid #CCC
+		&:last-child 
+			border-bottom: 0
+		.image_suggest_item
+			display: inline-block
 		.autosuggest_breadcrumb
 			display: block
 			color: #999
@@ -123,4 +140,9 @@ textarea.markdown
 		a
 			display: block
 		.ui-state-hover
-			background: #F00
+			+background-image(linear-gradient(top, #3875d7 20%, #2a62bc 90%))
+			background-color: #3875d7
+			color: #FFF
+		.image_suggest_img
+			margin-right: 5px
+			float: left

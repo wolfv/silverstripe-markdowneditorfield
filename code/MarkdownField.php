@@ -16,7 +16,6 @@ class MarkdownField extends TextareaField {
 		$properties["FindLink"] = $this->Link() . '/getlinktoid';
 
 		$properties["Editor"] = $this->Link() . '/getEditor';
-
 		$obj = ($properties) ? $this->customise($properties) : $this;
 		return $obj->renderWith($this->getTemplate());
 	}
@@ -70,6 +69,11 @@ class MarkdownField extends TextareaField {
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js');
 		Requirements::javascript(THIRDPARTY_DIR . '/jquery-ui/jquery-ui.js');
 		Requirements::javascript(THIRDPARTY_DIR. '/jquery-entwine/dist/jquery.entwine-dist.js');
+		
+		Requirements::javascript('sapphire/admin/javascript/ssui.core.js');
+		Requirements::javascript('sapphire/javascript/HtmlEditorField.js');
+
+
 		Requirements::javascript('markdown/javascript/lib/jquery.ui.autocomplete.html.js');
 		Requirements::javascript('markdown/javascript/lib/showdown.js');
 		Requirements::javascript('markdown/javascript/lib/ace/src/ace.js');
