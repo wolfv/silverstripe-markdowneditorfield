@@ -7,6 +7,7 @@ A simple, yet versatile field for nice textediting in the Silverstripe CMS. It's
 Features:
 
 Suggest Link: `[Testlink](:` leads to an autosuggest-field.
+<<<<<<< HEAD
 Suggest Image: `![Image Description](!` opens an image-autosuggest field.
 
 Getting the markdown editor field as a replacement for TinyMCE is easy:
@@ -31,3 +32,10 @@ $(document).ready(function() {
 More examples are on [http://softwaremaniacs.org/soft/highlight/en/description/](http://softwaremaniacs.org/soft/highlight/en/description/) (All credit to them)
 
 The Markdown Logo was made by Dustin Curtis. All other icons were made by Orman Clark [Premium Pixels](http://www.premiumpixels.com)
+=======
+
+Suggest Image: `[Image Description](!` opens an image-autosuggest field.
+
+---
+Credits for Markdown Logo go to Dustin Curtis. All other icons were made by Orman Clark [Premium Pixels](http://www.premiumpixels.com)
+>>>>>>> dbd28e79c3ee8754086350fd3747a5ae2b4877b6
