@@ -24,7 +24,7 @@ class MarkdownField extends TextareaField {
 		$search = $this->request["search"];
 		$data = DataList::create('SiteTree')->filter(array("Title:StartsWith" => $search));
 
-		$result;
+		$result = array();
 
 		foreach($data as $item) {
 			$result[] = array("Label" => $item->Title, "Breadcrumbs" => $item->Breadcrumbs(20, true, false, false), "ID" => $item->ID);
@@ -42,12 +42,12 @@ class MarkdownField extends TextareaField {
 	function imagesuggest() {
 		$search = $this->request["search"];
 		$data = DataList::create('Image')->filter(array("Title:PartialMatch" => $search));
-		$result;
+		
+		$result = array();
 
 		foreach($data as $item) {
 			$result[] = array("ImageLink" => $item->CMSThumbnail()->Link(), "Label" => $item->Title, "ID" => $item->ID);
 		}
-		//$data_array = $data->toNestedArray();
 		return json_encode($result);
 	}
 

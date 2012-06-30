@@ -16,8 +16,8 @@
 	
 	<div class="x"></div>
 	<div id="markdown_Helper">
-		<input id="markdown_SiteTreeAutocomplete" class="autocomplete" linksuggest="$LinkSuggest" findlink="$FindLink">
-		<input id="markdown_ImageAutocomplete" class="autocomplete" linksuggest="$ImageSuggest" findlink="$FindImageLink">
+		<input id="markdown_SiteTreeAutocomplete" type="text" class="autocomplete" linksuggest="$LinkSuggest" findlink="$FindLink" />
+		<input id="markdown_ImageAutocomplete" class="autocomplete" linksuggest="$ImageSuggest" findlink="$FindImageLink" type="text" />
 
 	</div>
 </body>

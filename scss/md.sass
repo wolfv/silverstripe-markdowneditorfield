@@ -98,9 +98,8 @@ textarea.markdown
 	height: 15px
 	font-size: 12px
 	font-family: $font
-	background: #FFF
 	padding: 0px
-	background: #FFF
+	background: #DDD
 	width: 200px
 	position: absolute
 	top: 10px
@@ -113,18 +112,21 @@ textarea.markdown
 	list-style-type: none
 	width: 200px
 	margin: 0
-	padding: 2px
-	+border-radius(2px)
+	+border-radius(3px)
+	border: 2px solid #000
+	padding: 1px
 	.ui-menu-item
 		font-family: $font
-		padding: 2px
 		display: block
 		+border-radius(0)
 		font-size: 12px
-		line-height: 15px
+		line-height: 12px
 		background: #F9F9F9
 		clear: both
 		border-bottom: 1px solid #CCC
+		a
+			padding: 3px
+			display: block
 		&:last-child 
 			border-bottom: 0
 		.image_suggest_item

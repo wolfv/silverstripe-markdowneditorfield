@@ -7,9 +7,10 @@
 			onmatch: function() {
 				self = this;
 				this.setEditorFrame(self[0].contentWindow);
-				this.closest('form').bind('beforesave', function() {
-					var value = EditorFrame.editor.getSession().getValue();
-					self.parent().find('textarea.markdown').val(value);
+				this.closest('form').bind('beforesubmitform',
+					function() {
+						var value = self.getEditorFrame().editor.getSession().getValue();
+						self.parent().find('textarea.markdown').val(value);
 				});
 			}
 		});
@@ -81,6 +82,7 @@
 
 					dialog.html($('<iframe>').attr('src', url));
 				}
+				return false;
 			}
 		});
 		$('#MDEditorQuickPreview').entwine({
