@@ -33,7 +33,9 @@ More examples are on [http://softwaremaniacs.org/soft/highlight/en/description/]
 
 ---
 
-### Example for an Page DataObject with an additional MarkdownText Field, that automatically caches parsed Markdown into the "Content" Field, so you can later add TinyMCE back.
+### Example for a Page 
+
+DataObject with an additional MarkdownText Field, that automatically caches parsed Markdown into the "Content" Field, so you can later add TinyMCE back.
 
 ```php
 class Page extends SiteTree {
