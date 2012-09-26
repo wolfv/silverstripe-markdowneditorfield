@@ -36,37 +36,21 @@ More examples are on [http://softwaremaniacs.org/soft/highlight/en/description/]
 ### Example for an Page DataObject with an additional MarkdownText Field, that automatically caches parsed Markdown into the "Content" Field, so you can later add TinyMCE back.
 
 ```php
+class Page extends SiteTree {
+
 	public static $db = array(
 		"MarkdownText" => "Text"
-	);
-
-	public static $has_one = array(
-	);
-	
-	public static $has_many = array(
-		//"Images" => "PageImage"
-	);
-	
+	);	
 
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
-
-		/*$fields->addFieldToTab('Root.Content.Slideshow', new ImageDataObjectManager(
-			$this,
-			'Images',
-			'PageImageObject',
-			'Image',
-			array('Title' => 'Titel'),
-			'getCMSFields_forPopup'
-		));
-		*/
-		//$fields->removeByName('Content');
-		//$fields->addFieldToTab('Root.Main', new MarkdownField('MarkdownText', 'Markdown hier eingeben'));
-		$fields = parent::getCMSFields();
+		
 		$md = new MarkdownField('MarkdownText', 'Markdown Content');
 		$md->addExtraClass('stacked'); // Little different Layout in CMS
+	
 		$fields->addFieldToTab('Root.Main', $md, 'Content');
 		$fields->removeByName('Content');
+		
 		return $fields;
 	}
 
@@ -75,6 +59,7 @@ More examples are on [http://softwaremaniacs.org/soft/highlight/en/description/]
 		$this->Content = $Parser->parse();
 		parent::onBeforeWrite();
 	}
+}
 ```
 
 ---
