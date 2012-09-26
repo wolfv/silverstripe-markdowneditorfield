@@ -31,7 +31,51 @@ $(document).ready(function() {
 
 More examples are on [http://softwaremaniacs.org/soft/highlight/en/description/](http://softwaremaniacs.org/soft/highlight/en/description/) (All credit to them)
 
+---
 
+### Example for an Page DataObject with an additional MarkdownText Field, that automatically caches parsed Markdown into the "Content" Field, so you can later add TinyMCE back.
+
+```php
+	public static $db = array(
+		"MarkdownText" => "Text"
+	);
+
+	public static $has_one = array(
+	);
+	
+	public static $has_many = array(
+		//"Images" => "PageImage"
+	);
+	
+
+	public function getCMSFields() {
+		$fields = parent::getCMSFields();
+
+		/*$fields->addFieldToTab('Root.Content.Slideshow', new ImageDataObjectManager(
+			$this,
+			'Images',
+			'PageImageObject',
+			'Image',
+			array('Title' => 'Titel'),
+			'getCMSFields_forPopup'
+		));
+		*/
+		//$fields->removeByName('Content');
+		//$fields->addFieldToTab('Root.Main', new MarkdownField('MarkdownText', 'Markdown hier eingeben'));
+		$fields = parent::getCMSFields();
+		$md = new MarkdownField('MarkdownText', 'Markdown Content');
+		$md->addExtraClass('stacked'); // Little different Layout in CMS
+		$fields->addFieldToTab('Root.Main', $md, 'Content');
+		$fields->removeByName('Content');
+		return $fields;
+	}
+
+	public function onBeforeWrite() {
+		$Parser = new MarkdownParser($this->MarkdownText);
+		$this->Content = $Parser->parse();
+		parent::onBeforeWrite();
+	}
+```
 
 ---
 The Markdown Logo was made by Dustin Curtis. All other icons were made by Orman Clark [Premium Pixels](http://www.premiumpixels.com)
